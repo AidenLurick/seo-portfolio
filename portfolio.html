@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEO Portfolio — xlaserlab</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --purple: #7c3aed;
+  --purple-light: #ede9fe;
+  --purple-mid: #a78bfa;
+  --bg: #fafafa;
+  --white: #ffffff;
+  --text: #111827;
+  --text-sub: #6b7280;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --green: #16a34a;
+  --green-bg: #dcfce7;
+  --red: #dc2626;
+  --red-bg: #fee2e2;
+  --blue: #2563eb;
+  --blue-bg: #dbeafe;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  background: rgba(255,255,255,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.nav-brand-icon {
+  width: 32px; height: 32px;
+  background: var(--purple);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+.nav-brand-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+}
+.nav-brand-name span { color: var(--purple); }
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2px;
+}
+.nav-links li a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  text-decoration: none;
+  color: var(--text-sub);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s;
+}
+.nav-links li a:hover { background: var(--border-light); color: var(--text); }
+.nav-links li a.active {
+  background: var(--purple-light);
+  color: var(--purple);
+}
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.5;
+}
+.nav-links li a.active .nav-dot { opacity: 1; }
+
+/* ── SECTIONS ── */
+section { display: none; }
+section.active { display: block; }
+
+/* ── HERO BAND ── */
+.hero-band {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem 2.5rem;
+}
+.hero-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--purple-light);
+  color: var(--purple);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  letter-spacing: 0.03em;
+}
+.hero-pill-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--purple);
+}
+.hero-band h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.hero-band h1 span { color: var(--purple); }
+.hero-band p {
+  color: var(--text-sub);
+  font-size: 15px;
+  max-width: 600px;
+}
+.hero-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.hero-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-sub);
+}
+.hero-meta-item svg { flex-shrink: 0; }
+
+/* ── PAGE WRAP ── */
+.page-wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 5rem;
+}
+
+/* ── SECTION LABEL ── */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.25rem;
+  margin-top: 2.5rem;
+}
+.section-label:first-child { margin-top: 0; }
+.section-label-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+.section-label-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── STAT CARDS ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.25rem 1.4rem;
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--purple);
+  border-radius: 14px 14px 0 0;
+}
+.stat-card .s-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+.stat-card .s-value {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+.stat-card .s-change {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.s-change.up { color: var(--green); }
+.s-change.down { color: var(--red); }
+
+/* ── COMPARE PANEL ── */
+.compare-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 1.5rem;
+}
+.cp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.cp-card.featured { border-color: var(--purple); }
+.cp-head {
+  padding: 1rem 1.25rem 0.85rem;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cp-card.featured .cp-head { background: var(--purple-light); border-bottom-color: #ddd6fe; }
+.cp-period {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-sub);
+}
+.cp-card.featured .cp-period { color: var(--purple); }
+.cp-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  background: var(--purple-light);
+  color: var(--purple);
+}
+.cp-body { padding: 0.25rem 0; }
+.cp-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1.25rem;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 14px;
+}
+.cp-row:last-child { border-bottom: none; }
+.cp-name { color: var(--text-sub); }
+.cp-val { font-weight: 700; color: var(--text); }
+.cp-card.featured .cp-val { color: var(--purple); }
+
+/* ── TABLE ── */
+.table-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+.table-head-bar {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.table-head-bar h3 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+}
+.table-head-bar span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  background: #fafafa;
+  padding: 9px 16px;
+  text-align: left;
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+}
+tbody td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-light);
+  color: var(--text);
+}
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: #fafbff; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+}
+.badge-up { background: var(--green-bg); color: var(--green); }
+.badge-down { background: #f3f4f6; color: var(--text-muted); }
+.badge-purple { background: var(--purple-light); color: var(--purple); }
+
+/* ── SCREENSHOT GRID ── */
+.screenshot-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+.sc-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.sc-card:hover { border-color: var(--purple-mid); }
+.sc-placeholder {
+  height: 180px;
+  background: var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border-bottom: 1px solid var(--border);
+}
+.sc-placeholder:hover { background: #eef2ff; }
+.sc-placeholder .upload-icon {
+  width: 40px; height: 40px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+}
+.sc-placeholder .upload-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.sc-card img {
+  width: 100%; height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--border);
+  display: block;
+}
+.sc-info { padding: 0.75rem 1rem; }
+.sc-info .sc-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.sc-info .sc-desc { font-size: 12px; color: var(--text-muted); }
+input[type="file"] { display: none; }
+
+/* ── HIGHLIGHT BOX ── */
+.highlight-box {
+  background: linear-gradient(135deg, #ede9fe 0%, #f5f3ff 100%);
+  border: 1px solid #ddd6fe;
+  border-radius: 14px;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.hl-icon {
+  width: 36px; height: 36px;
+  background: var(--purple);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.hl-icon svg { fill: white; }
+.hl-content .hl-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple);
+  margin-bottom: 4px;
+}
+.hl-content .hl-text {
+  font-size: 13px;
+  color: #5b21b6;
+  line-height: 1.6;
+}
+.hl-content .hl-text strong { font-weight: 700; }
+
+/* ── VIDEO GRID ── */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 1.5rem;
+}
+.vid-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+.vid-card:hover { border-color: var(--purple-mid); }
+.vid-placeholder {
+  height: 180px;
+  background: #111827;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+.vid-placeholder:hover { background: #1f2937; }
+.play-ring {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.3);
+  background: rgba(124,58,237,0.7);
+  display: flex; align-items: center; justify-content: center;
+}
+.play-ring svg { fill: white; margin-left: 2px; }
+.vid-placeholder span { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; }
+.vid-card video {
+  width: 100%; height: 180px;
+  object-fit: cover;
+  display: none;
+  background: #111827;
+  border-bottom: 1px solid var(--border);
+}
+.vid-info { padding: 0.75rem 1rem; }
+.vid-info .vid-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.vid-info .vid-desc { font-size: 12px; color: var(--text-muted); }
+
+/* ── FEATURE GRID ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 1.5rem;
+}
+.feat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  transition: border-color 0.15s;
+}
+.feat-card:hover { border-color: var(--purple-mid); }
+.feat-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--purple-light);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.feat-icon svg { stroke: var(--purple); }
+.feat-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.feat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ── RESUME QUOTE ── */
+.resume-quote {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--purple);
+  border-radius: 0 14px 14px 0;
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.5rem;
+  font-size: 14px;
+  color: var(--text-sub);
+  line-height: 1.8;
+}
+.resume-quote .rq-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--purple);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 6px;
+}
+.resume-quote strong { color: var(--text); font-weight: 700; }
+
+/* ── COMING SOON ── */
+.coming-soon {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text-muted);
+}
+.coming-soon .cs-icon {
+  width: 56px; height: 56px;
+  background: var(--border-light);
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+.coming-soon h3 { font-size: 16px; font-weight: 700; color: var(--text-sub); margin-bottom: 6px; }
+.coming-soon p { font-size: 13px; }
+
+@media (max-width: 768px) {
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .compare-panel { grid-template-columns: 1fr; }
+  .screenshot-grid, .video-grid, .feature-grid { grid-template-columns: 1fr; }
+  .hero-band h1 { font-size: 24px; }
+  .nav-brand-name { display: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">
+      <div class="nav-brand-icon">S</div>
+      <span class="nav-brand-name">SEO Portfolio <span>·</span> xlaserlab</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#" class="active" data-tab="ga4"><span class="nav-dot"></span>GA4</a></li>
+      <li><a href="#" data-tab="gsc"><span class="nav-dot"></span>GSC</a></li>
+      <li><a href="#" data-tab="semrush"><span class="nav-dot"></span>SEMrush</a></li>
+      <li><a href="#" data-tab="webdev"><span class="nav-dot"></span>网站开发</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════ GA4 ═══════════════════ -->
+<section id="ga4" class="active">
+
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>Google Analytics 4</div>
+      <h1>自然流量增长 <span>+162%</span></h1>
+      <p>入职8个月内，通过 SEO 优化推动自然搜索渠道全面增长，带动收入提升 980%。</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          对比周期：2025/01/01 — 2025/08/31 vs 2025/09/01 — 2026/04/29
+        </div>
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          数据来源：GA4 官方报告 · Organic Search 渠道
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <!-- 核心指标 -->
+    <div class="section-label"><span class="section-label-text">核心指标（入职后）</span><div class="section-label-line"></div></div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="s-label">有机会话数</div>
+        <div class="s-value">76,504</div>
+        <div class="s-change up">↑ +162% vs 入职前</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">有机用户数</div>
+        <div class="s-value">71,008</div>
+        <div class="s-change up">↑ +159% vs 入职前</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">关键事件转化</div>
+        <div class="s-value">258,243</div>
+        <div class="s-change up">↑ +157% vs 入职前</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">自然搜索收入</div>
+        <div class="s-value">$526,849</div>
+        <div class="s-change up">↑ +980% vs 入职前</div>
+      </div>
+    </div>
+
+    <!-- 简历亮点 -->
+    <div class="highlight-box">
+      <div class="hl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="hl-content">
+        <div class="hl-title">简历表述</div>
+        <div class="hl-text">任职8个月内（2025.09—2026.04），GA4 自然搜索会话数从月均 <strong>3,604次</strong> 增长至月均 <strong>9,992次</strong>（<strong>+162%</strong>），用户数增长 <strong>+159%</strong>，关键事件转化数提升 <strong>+157%</strong>，带动自然搜索渠道收入从 <strong>$48,778</strong> 跃升至 <strong>$526,849</strong>（<strong>+980%</strong>）。</div>
+      </div>
+    </div>
+
+    <!-- 入职前后对比 -->
+    <div class="section-label"><span class="section-label-text">入职前后对比</span><div class="section-label-line"></div></div>
+    <div class="compare-panel">
+      <div class="cp-card">
+        <div class="cp-head">
+          <span class="cp-period">入职前 · 2025年1月—8月</span>
+        </div>
+        <div class="cp-body">
+          <div class="cp-row"><span class="cp-name">有机会话数</span><span class="cp-val">29,175</span></div>
+          <div class="cp-row"><span class="cp-name">有机用户数</span><span class="cp-val">27,482</span></div>
+          <div class="cp-row"><span class="cp-name">事件数</span><span class="cp-val">244,332</span></div>
+          <div class="cp-row"><span class="cp-name">关键事件</span><span class="cp-val">100,308</span></div>
+          <div class="cp-row"><span class="cp-name">自然收入</span><span class="cp-val">$48,778</span></div>
+          <div class="cp-row"><span class="cp-name">月均会话</span><span class="cp-val">3,604</span></div>
+        </div>
+      </div>
+      <div class="cp-card featured">
+        <div class="cp-head">
+          <span class="cp-period">入职后 · 2025年9月—2026年4月</span>
+          <span class="cp-badge">当前</span>
+        </div>
+        <div class="cp-body">
+          <div class="cp-row"><span class="cp-name">有机会话数</span><span class="cp-val">76,504</span></div>
+          <div class="cp-row"><span class="cp-name">有机用户数</span><span class="cp-val">71,008</span></div>
+          <div class="cp-row"><span class="cp-name">事件数</span><span class="cp-val">636,300</span></div>
+          <div class="cp-row"><span class="cp-name">关键事件</span><span class="cp-val">258,243</span></div>
+          <div class="cp-row"><span class="cp-name">自然收入</span><span class="cp-val">$526,849</span></div>
+          <div class="cp-row"><span class="cp-name">月均会话</span><span class="cp-val">9,992</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 月度明细表 -->
+    <div class="section-label"><span class="section-label-text">月度自然流量明细</span><div class="section-label-line"></div></div>
+    <div class="table-card">
+      <div class="table-head-bar">
+        <h3>月度数据 · Organic Search</h3>
+        <span>2025/01 — 2026/04</span>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>月份</th>
+            <th>会话数</th>
+            <th>用户数</th>
+            <th>页面浏览</th>
+            <th>阶段</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2025年1月</td><td>939</td><td>691</td><td>3,878</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年2月</td><td>5,257</td><td>4,084</td><td>16,744</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年3月</td><td>8,399</td><td>6,862</td><td>25,451</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年4月</td><td>3,532</td><td>2,692</td><td>6,096</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年5月</td><td>2,270</td><td>1,730</td><td>3,760</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年6月</td><td>2,696</td><td>1,890</td><td>6,895</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年7月</td><td>2,048</td><td>1,380</td><td>5,109</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年8月</td><td>3,694</td><td>2,684</td><td>9,343</td><td><span class="badge badge-down">入职前</span></td></tr>
+          <tr><td>2025年9月</td><td>5,147</td><td>3,725</td><td>12,068</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2025年10月</td><td>11,747</td><td>8,731</td><td>38,454</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2025年11月</td><td>9,354</td><td>6,883</td><td>27,281</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2025年12月</td><td>12,332</td><td>8,772</td><td>29,930</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2026年1月</td><td>9,951</td><td>6,748</td><td>26,535</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2026年2月</td><td>12,187</td><td>9,037</td><td>24,653</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2026年3月</td><td>10,474</td><td>7,409</td><td>21,135</td><td><span class="badge badge-purple">入职后</span></td></tr>
+          <tr><td>2026年4月</td><td>8,745</td><td>6,215</td><td>30,075</td><td><span class="badge badge-purple">入职后</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 截图 -->
+    <div class="section-label"><span class="section-label-text">数据截图</span><div class="section-label-line"></div></div>
+    <div class="screenshot-grid">
+      <div class="sc-card">
+        <label class="sc-placeholder" for="ga4-up1">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="ga4-up1" accept="image/*" onchange="loadImg(this,'ga4-i1',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="ga4-i1" style="display:none">
+        <div class="sc-info"><div class="sc-title">流量获取对比报告</div><div class="sc-desc">入职前后 Organic Search 会话数、收入对比</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="ga4-up2">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="ga4-up2" accept="image/*" onchange="loadImg(this,'ga4-i2',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="ga4-i2" style="display:none">
+        <div class="sc-info"><div class="sc-title">自然流量趋势</div><div class="sc-desc">月度自然流量走势图</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="ga4-up3">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="ga4-up3" accept="image/*" onchange="loadImg(this,'ga4-i3',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="ga4-i3" style="display:none">
+        <div class="sc-info"><div class="sc-title">Shopify 归因数据</div><div class="sc-desc">Google/Bing/Brave Organic 订单与销售额</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ GSC ═══════════════════ -->
+<section id="gsc">
+
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>Google Search Console</div>
+      <h1>搜索曝光增长 <span>+1,410%</span></h1>
+      <p>从几乎零曝光到 250 万次展示，Google 搜索覆盖面全面扩张。</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          对比周期：2025/01/01 — 2025/08/31 vs 2025/09/01 — 2026/04/28
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="section-label"><span class="section-label-text">核心指标</span><div class="section-label-line"></div></div>
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="s-label">总点击次数</div>
+        <div class="s-value">66,103</div>
+        <div class="s-change up">↑ +1,295% vs 入职前</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">总曝光次数</div>
+        <div class="s-value">250万</div>
+        <div class="s-change up">↑ +1,410% vs 入职前</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">平均排名</div>
+        <div class="s-value">17.1</div>
+        <div class="s-change up">↑ 从 39.7 提升 22.6位</div>
+      </div>
+      <div class="stat-card">
+        <div class="s-label">平均点击率</div>
+        <div class="s-value">2.65%</div>
+        <div class="s-change up">非品牌词曝光 150万</div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="hl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="hl-content">
+        <div class="hl-title">简历表述</div>
+        <div class="hl-text">主导公司官网 SEO 建设，任职8个月内 Google 自然点击量增长 <strong>+1,295%</strong>（4,736次 → 66,103次），搜索曝光量增长 <strong>+1,410%</strong>（16.5万 → 250万），平均排名从第 <strong>39.7位</strong> 提升至第 <strong>17.1位</strong>；非品牌通用词（laser welder、laser welding machine 等）累计获得 <strong>1.28万次</strong> 点击、<strong>150万次</strong> 曝光。</div>
+      </div>
+    </div>
+
+    <div class="section-label"><span class="section-label-text">入职前后对比</span><div class="section-label-line"></div></div>
+    <div class="compare-panel">
+      <div class="cp-card">
+        <div class="cp-head"><span class="cp-period">入职前 · 2025年1月—8月</span></div>
+        <div class="cp-body">
+          <div class="cp-row"><span class="cp-name">总点击次数</span><span class="cp-val">4,736</span></div>
+          <div class="cp-row"><span class="cp-name">总曝光次数</span><span class="cp-val">16.5万</span></div>
+          <div class="cp-row"><span class="cp-name">平均排名</span><span class="cp-val">39.7</span></div>
+          <div class="cp-row"><span class="cp-name">平均点击率</span><span class="cp-val">2.9%</span></div>
+          <div class="cp-row"><span class="cp-name">日均点击</span><span class="cp-val">~20次</span></div>
+        </div>
+      </div>
+      <div class="cp-card featured">
+        <div class="cp-head"><span class="cp-period">入职后 · 2025年9月—2026年4月</span><span class="cp-badge">当前</span></div>
+        <div class="cp-body">
+          <div class="cp-row"><span class="cp-name">总点击次数</span><span class="cp-val">66,103</span></div>
+          <div class="cp-row"><span class="cp-name">总曝光次数</span><span class="cp-val">250万</span></div>
+          <div class="cp-row"><span class="cp-name">平均排名</span><span class="cp-val">17.1</span></div>
+          <div class="cp-row"><span class="cp-name">平均点击率</span><span class="cp-val">2.65%</span></div>
+          <div class="cp-row"><span class="cp-name">日均点击</span><span class="cp-val">~274次</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-label"><span class="section-label-text">非品牌词 Top 关键词</span><div class="section-label-line"></div></div>
+    <div class="table-card">
+      <div class="table-head-bar">
+        <h3>非品牌通用词排名（2025/09—2026/04）</h3>
+        <span>已过滤所有品牌词</span>
+      </div>
+      <table>
+        <thead>
+          <tr><th>关键词</th><th>点击数</th><th>曝光数</th><th>点击率</th><th>平均排名</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>laser welder</td><td>5,039</td><td>191,780</td><td>2.63%</td><td>5.5</td></tr>
+          <tr><td>laser welding machine</td><td>2,098</td><td>149,079</td><td>1.41%</td><td>6.4</td></tr>
+          <tr><td>lazer welder</td><td>314</td><td>17,708</td><td>1.77%</td><td>5.2</td></tr>
+          <tr><td>uv laser engraver</td><td>305</td><td>5,158</td><td>5.91%</td><td>8.8</td></tr>
+          <tr><td>laser welders</td><td>255</td><td>16,304</td><td>1.56%</td><td>6.7</td></tr>
+          <tr><td>laser welding</td><td>220</td><td>31,573</td><td>0.70%</td><td>14.9</td></tr>
+          <tr><td>laser welder for sale</td><td>185</td><td>22,827</td><td>0.81%</td><td>7.4</td></tr>
+          <tr><td>laser cleaning machine</td><td>120</td><td>20,293</td><td>0.59%</td><td>10.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-label"><span class="section-label-text">数据截图</span><div class="section-label-line"></div></div>
+    <div class="screenshot-grid">
+      <div class="sc-card">
+        <label class="sc-placeholder" for="gsc-up1">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="gsc-up1" accept="image/*" onchange="loadImg(this,'gsc-i1',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="gsc-i1" style="display:none">
+        <div class="sc-info"><div class="sc-title">GSC 入职前后对比图</div><div class="sc-desc">点击 +1295%、曝光 +1410% 对比截图</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="gsc-up2">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="gsc-up2" accept="image/*" onchange="loadImg(this,'gsc-i2',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="gsc-i2" style="display:none">
+        <div class="sc-info"><div class="sc-title">非品牌词关键词表</div><div class="sc-desc">laser welder 等通用词排名数据</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="gsc-up3">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="gsc-up3" accept="image/*" onchange="loadImg(this,'gsc-i3',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="gsc-i3" style="display:none">
+        <div class="sc-info"><div class="sc-title">排名趋势截图</div><div class="sc-desc">平均排名从 39.7 → 17.1 趋势</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ SEMrush ═══════════════════ -->
+<section id="semrush">
+
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>SEMrush</div>
+      <h1>关键词与 <span>竞争分析</span></h1>
+      <p>关键词排名追踪、竞品分析与域名权重增长数据。</p>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+    <div class="section-label"><span class="section-label-text">数据截图</span><div class="section-label-line"></div></div>
+    <div class="screenshot-grid">
+      <div class="sc-card">
+        <label class="sc-placeholder" for="sem-up1">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="sem-up1" accept="image/*" onchange="loadImg(this,'sem-i1',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="sem-i1" style="display:none">
+        <div class="sc-info"><div class="sc-title">域名概览</div><div class="sc-desc">Authority Score、自然流量趋势</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="sem-up2">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="sem-up2" accept="image/*" onchange="loadImg(this,'sem-i2',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="sem-i2" style="display:none">
+        <div class="sc-info"><div class="sc-title">关键词排名分布</div><div class="sc-desc">Top 10 / 11-20 / 21-50 排名分布</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="sem-up3">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="sem-up3" accept="image/*" onchange="loadImg(this,'sem-i3',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="sem-i3" style="display:none">
+        <div class="sc-info"><div class="sc-title">竞品对比分析</div><div class="sc-desc">与竞争对手关键词重合度对比</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ 网站开发 ═══════════════════ -->
+<section id="webdev">
+
+  <div class="hero-band">
+    <div class="hero-inner">
+      <div class="hero-pill"><span class="hero-pill-dot"></span>网站开发</div>
+      <h1>xlaserlab.com <span>官网开发</span></h1>
+      <p>负责官网前端开发与页面优化，涵盖主站及德国站、欧洲站多语言版本，基于 Shopify Liquid 进行自定义开发。</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          xlaserlab.com · de.xlaserlab.com · eu.xlaserlab.com
+        </div>
+        <div class="hero-meta-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Shopify · Liquid · HTML / CSS / JS
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-wrap">
+
+    <div class="section-label"><span class="section-label-text">开发内容</span><div class="section-label-line"></div></div>
+    <div class="feature-grid">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">首页设计与开发</div>
+          <div class="feat-desc">Banner、产品展示区、FAQ 等核心板块从零搭建</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">多语言站点</div>
+          <div class="feat-desc">德国站 de.xlaserlab.com、欧洲站 eu.xlaserlab.com</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">SEO 技术优化</div>
+          <div class="feat-desc">结构化数据 Schema、页面速度、Hreflang 多语言标签</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">产品页面开发</div>
+          <div class="feat-desc">产品详情页布局、参数展示与内容 SEO 优化</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">落地页制作</div>
+          <div class="feat-desc">活动页、专题页独立开发上线，配合营销活动节点</div>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <div>
+          <div class="feat-title">Shopify Liquid 开发</div>
+          <div class="feat-desc">自定义 Section、Snippet，主题功能定制化开发</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlight-box">
+      <div class="hl-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <div class="hl-content">
+        <div class="hl-title">简历表述</div>
+        <div class="hl-text">负责 xlaserlab.com 官网前端开发与 SEO 技术优化，独立完成首页、产品页、活动落地页的设计与开发；搭建<strong>德国站、欧洲站</strong>多语言版本，配置 Hreflang 标签与多语言 Schema；基于 <strong>Shopify Liquid</strong> 进行主题自定义开发，结合 SEO 技术规范推动网站自然流量增长 <strong>+162%</strong>。</div>
+      </div>
+    </div>
+
+    <!-- 演示视频 -->
+    <div class="section-label"><span class="section-label-text">演示视频</span><div class="section-label-line"></div></div>
+    <div class="video-grid">
+      <div class="vid-card">
+        <label for="vid-up1">
+          <div class="vid-placeholder" id="vp1">
+            <div class="play-ring"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div>
+            <span>点击上传视频</span>
+          </div>
+        </label>
+        <input type="file" id="vid-up1" accept="video/*" onchange="loadVid(this,'vid1','vp1')">
+        <video id="vid1" controls></video>
+        <div class="vid-info"><div class="vid-title">官网主站演示</div><div class="vid-desc">xlaserlab.com 首页及核心功能展示</div></div>
+      </div>
+      <div class="vid-card">
+        <label for="vid-up2">
+          <div class="vid-placeholder" id="vp2">
+            <div class="play-ring"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div>
+            <span>点击上传视频</span>
+          </div>
+        </label>
+        <input type="file" id="vid-up2" accept="video/*" onchange="loadVid(this,'vid2','vp2')">
+        <video id="vid2" controls></video>
+        <div class="vid-info"><div class="vid-title">多语言站点演示</div><div class="vid-desc">德国站 / 欧洲站页面功能展示</div></div>
+      </div>
+      <div class="vid-card">
+        <label for="vid-up3">
+          <div class="vid-placeholder" id="vp3">
+            <div class="play-ring"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6V2z"/></svg></div>
+            <span>点击上传视频</span>
+          </div>
+        </label>
+        <input type="file" id="vid-up3" accept="video/*" onchange="loadVid(this,'vid3','vp3')">
+        <video id="vid3" controls></video>
+        <div class="vid-info"><div class="vid-title">产品页 / 落地页演示</div><div class="vid-desc">核心产品页面与活动落地页展示</div></div>
+      </div>
+    </div>
+
+    <!-- 页面截图 -->
+    <div class="section-label"><span class="section-label-text">页面截图</span><div class="section-label-line"></div></div>
+    <div class="screenshot-grid">
+      <div class="sc-card">
+        <label class="sc-placeholder" for="web-up1">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="web-up1" accept="image/*" onchange="loadImg(this,'web-i1',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="web-i1" style="display:none">
+        <div class="sc-info"><div class="sc-title">官网首页</div><div class="sc-desc">xlaserlab.com 主站首页设计</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="web-up2">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="web-up2" accept="image/*" onchange="loadImg(this,'web-i2',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="web-i2" style="display:none">
+        <div class="sc-info"><div class="sc-title">产品详情页</div><div class="sc-desc">产品页面布局与内容结构</div></div>
+      </div>
+      <div class="sc-card">
+        <label class="sc-placeholder" for="web-up3">
+          <div class="upload-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+          <span class="upload-text">点击上传截图</span>
+        </label>
+        <input type="file" id="web-up3" accept="image/*" onchange="loadImg(this,'web-i3',this.parentElement.querySelector('.sc-placeholder'))">
+        <img id="web-i3" style="display:none">
+        <div class="sc-info"><div class="sc-title">多语言站点</div><div class="sc-desc">德国站 / 欧洲站页面</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+    document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+    link.classList.add('active');
+    document.getElementById(link.dataset.tab).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+function loadImg(input, imgId, placeholder) {
+  const file = input.files[0];
+  if (!file) return;
+  const img = document.getElementById(imgId);
+  img.src = URL.createObjectURL(file);
+  img.style.cssText = 'display:block;width:100%;height:180px;object-fit:cover;border-bottom:1px solid #e5e7eb;';
+  if (placeholder) placeholder.style.display = 'none';
+}
+
+function loadVid(input, vidId, placeholderId) {
+  const file = input.files[0];
+  if (!file) return;
+  const video = document.getElementById(vidId);
+  const placeholder = document.getElementById(placeholderId);
+  video.src = URL.createObjectURL(file);
+  video.style.display = 'block';
+  if (placeholder) placeholder.style.display = 'none';
+}
+</script>
+</body>
+</html>
